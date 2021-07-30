@@ -80,7 +80,7 @@
             "stories count"
           ],
           "summary": "",
-          "description": "fetch stories count count",          
+          "description": "fetch stories count",          
           "produces": [               
             "application/json"
           ],          
@@ -95,6 +95,34 @@
             },
             "403": {
               "description": "You do not have necessary permissions for the resource"
+            },
+            "404": {
+              "description": "the end point you searh is not found"
+            }
+          }
+        }
+      },
+      "/admin/get-categories": {
+        "get": {
+          "tags": [
+            "get place categories"
+          ],
+          "summary": "",
+          "description": "fetch place's categories",          
+          "produces": [               
+            "application/json"
+          ],          
+          "security": [
+            {
+              "Bearer": []
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Will send `Authenticated`"
+            },
+            "500": {
+              "description": "will send error if any error accours during processing"
             },
             "404": {
               "description": "the end point you searh is not found"
