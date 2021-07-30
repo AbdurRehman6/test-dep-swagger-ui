@@ -1,0 +1,107 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "version": "1.0.0",
+      "title": "Pakrism",
+      "description": "Pakrism backend api documentation.\n"
+    },
+    "host": "unvt8qxigd.execute-api.ap-south-1.amazonaws.com/dev",
+    "schemes": [
+      "https",
+      "http"
+    ],
+    "securityDefinitions": {
+      "Bearer": {
+        "type": "apiKey",
+        "name": "Authorization",
+        "in": "header"
+      }
+    },
+    "paths": {
+      "/user/login": {
+      "post": {
+        "tags": [
+        "login"
+        ],
+        "summary": "Login user",
+        "description": "",
+        "operationId": "login",    
+        "parameters": [
+        {
+        "in": "formData",
+        "name": "email",
+        "description": "user email for login",
+        "required": true,
+        "type": "string"
+        },
+        {
+          "in": "formData",
+          "name": "password",
+          "description": "user password for login",
+          "required": true,
+          "type": "string"
+          }
+        ],
+        "responses": {
+        "405": {
+        "description": "Invalid input"
+        }
+        },
+        "security": [
+          {
+          "petstore_auth": [
+          "write:pets",
+          "read:pets"
+          ]
+          }
+          ]
+        }
+      },
+      "/user/album-count": {
+        "get": {
+          "security": [
+            {
+              "Bearer": []
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Will send `Authenticated`"
+            },
+            "403": {
+              "description": "You do not have necessary permissions for the resource"
+            }
+          }
+        }
+      },
+      "/user/stories-count": {
+        "get": {
+          "tags": [
+            "stories count"
+          ],
+          "summary": "",
+          "description": "fetch stories count count",          
+          "produces": [               
+            "application/json"
+          ],          
+          "security": [
+            {
+              "Bearer": []
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Will send `Authenticated`"
+            },
+            "403": {
+              "description": "You do not have necessary permissions for the resource"
+            },
+            "404": {
+              "description": "the end point you searh is not found"
+            }
+          }
+        }
+      }
+    }
+  
+  }
